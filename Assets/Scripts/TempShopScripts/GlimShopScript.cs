@@ -5,32 +5,28 @@ using TMPro;
 
 public class GlimShopScript : MonoBehaviour
 {
-    public double glimAmount = 100f;
-    public double passiveIncrease = 0f;
     public double upgradeCost = 100f;
     private Button thisButton;
     public TMP_Text upgradeCostText;
-    public TMP_Text glimAmountText;
+    public GlimmerManager glimManScript;
 
     private void Start()
     {
         thisButton = GetComponent<Button>();
-        
+        glimManScript = FindAnyObjectByType<GlimmerManager>();
     }
 
     private void Update()
     {
         GainGlimmer();
         upgradeCostText.text = upgradeCost.ToString();
-        glimAmountText.text = glimAmount.ToString();
-        //print(glimAmount);
 
-        if (glimAmount < upgradeCost)
+        if (glimManScript.glimAmount < upgradeCost)
         {
             thisButton.interactable = false;
-            
+               
         }
-        else if (glimAmount > upgradeCost)
+        else if (glimManScript.glimAmount > upgradeCost)
         {
             thisButton.interactable = true;
         }
@@ -40,14 +36,14 @@ public class GlimShopScript : MonoBehaviour
 
     public void ButtonUpgrade()
     {
-        glimAmount -= upgradeCost;
-        passiveIncrease += 10f;
-        upgradeCost += 50f;
+        glimManScript.glimAmount -= upgradeCost;
+        glimManScript.passiveIncrease += 10f * 0.5f;
+        upgradeCost += 50f * 0.3f;
     }
 
     public void GainGlimmer()
     {
-        glimAmount += passiveIncrease * Time.deltaTime;
+        glimManScript.glimAmount += glimManScript.passiveIncrease * Time.deltaTime;
 
     }
 
