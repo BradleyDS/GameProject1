@@ -7,20 +7,17 @@ public class GlimmerManager : MonoBehaviour
     public TMP_Text glimAmountText;
     public double passiveIncrease = 0f;
     public TMP_Text passiveIncreasetext;
+    public double clickPower = 1f;
 
-
-
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
         glimAmountText.text = glimAmount.ToString();
         passiveIncreasetext.text = passiveIncrease.ToString() + "/s";
+    }
+    public void GainByClick()
+    {
+        glimAmount += clickPower;
     }
 }

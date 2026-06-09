@@ -8,7 +8,7 @@ public class GlimShopScript : MonoBehaviour
     public double upgradeCost = 100f;
     private Button thisButton;
     public TMP_Text upgradeCostText;
-    public GlimmerManager glimManScript;
+    private GlimmerManager glimManScript;
 
     private void Start()
     {
