@@ -15,7 +15,7 @@ public class ResourceScript : MonoBehaviour
     void Update()
     {
         //GainGlimmer();
-        print(glimmerNum);
+        //print(glimmerNum);
     }
     public void GainByClick()
     {
